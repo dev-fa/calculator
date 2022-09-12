@@ -78,12 +78,12 @@ button:active {
     margin-bottom: 16px;
 }
 
-.calculations {
+#calculations {
     color: #383838;
     font-style: italic;
 }
 
-.calculated {
+#calculated {
     font-size: 38px;
 }
 
