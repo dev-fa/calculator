@@ -20,6 +20,8 @@ function divide(num1, num2) {
 
 function operate(operator, num1, num2) {
     let answer;
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     switch (operator) {
         case "+":
             answer = add(num1, num2);
@@ -34,8 +36,7 @@ function operate(operator, num1, num2) {
             answer = divide(num1, num2);
             break;
     }
-    calculated.textContent = answer;
-    return parseInt(answer);
+    return Math.round(answer * 100) / 100;
 }
 
 
@@ -57,7 +58,7 @@ function storeOperator(e) {
     calculations.textContent += this.textContent;
 
     if (typeof firstOperand === "undefined") {
-        firstOperand = parseInt(calculationArray[0]);
+        firstOperand = calculationArray[0];
         operator = this.textContent;
     } else {
         if (calculationArray[1] !== undefined) {
@@ -65,7 +66,7 @@ function storeOperator(e) {
             calculations.textContent += this.textContent;
             operator = this.textContent;
         } else {
-            firstOperand = parseInt(calculationArray[0]);
+            firstOperand = calculationArray[0];
             operator = this.textContent;
         }    
     }
@@ -79,7 +80,7 @@ function displayAnswer() {
     let calculatedAnswer;
 
     calculationArray = calculations.textContent.split(/\+|-|\/|\*/g);
-    secondOperand = parseInt(calculationArray[1]);
+    secondOperand = calculationArray[1];
 
     switch (operator) {
         case "+":
@@ -100,6 +101,17 @@ function displayAnswer() {
     calculations.textContent = calculatedAnswer;
     firstOperand = calculatedAnswer;
     secondOperand = undefined;
+}
+
+
+// Clear the display and reset all arithmetic variables.
+function clearDisplay() {
+    firstOperand = undefined;
+    secondOperand = undefined;
+    operator = undefined;
+
+    calculations.textContent = "0";
+    calculated.textContent = "0";
 }
 
 
@@ -130,12 +142,17 @@ for (i of operatorBtns) {
 
 // Display
 const calculations = document.getElementById("calculations");
-calculations.textContent = "0";
 const calculated = document.getElementById("calculated");
+calculations.textContent = "0";
+calculated.textContent = "0"
 
 // Operate button
 const operateBtn = document.getElementById("operate");
 operateBtn.addEventListener("click", displayAnswer);
+
+// Clear button
+const clearBtn = document.getElementById("clear");
+clearBtn.addEventListener("click", clearDisplay);
 
 // Arithmetic helper variables
 let firstOperand;
