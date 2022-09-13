@@ -1,24 +1,23 @@
-// add
 function add(num1, num2) {
     return num1 + num2;
 }
 
-// subtract
+
 function subtract(num1, num2) {
     return num1 - num2;
 }
 
-// multiply
+
 function multiply(num1, num2) {
     return num1 * num2;
 }
 
-// divide
+
 function divide(num1, num2) {
     return num1 / num2;
 }
 
-// operate = takes an operator and 2 numbers and then calls one of the above functions on the numbers
+
 function operate(operator, num1, num2) {
     let answer;
     switch (operator) {
@@ -39,6 +38,72 @@ function operate(operator, num1, num2) {
     return parseInt(answer);
 }
 
+
+// Populates display based on number button input
+function displayCalculations(e) {
+    if (calculations.textContent === "0") calculations.textContent = "";
+    calculations.textContent += this.textContent;
+}
+
+
+/* When operator button is pressed the first time, store the first operand and the operator.
+   When operator button is pressed after the second operand is declared, 
+   call displayAnswer function using previous operator, then store the next operator and add it to display.
+   When operator button is pressed when first operand is declared but second operand is not,
+   update first operand if new numbers are inputted and store the operator.*/
+function storeOperator(e) {
+    calculationArray = [];
+    calculationArray = calculations.textContent.split(/\+|-|\/|\*/g);
+    calculations.textContent += this.textContent;
+
+    if (typeof firstOperand === "undefined") {
+        firstOperand = parseInt(calculationArray[0]);
+        operator = this.textContent;
+    } else {
+        if (calculationArray[1] !== undefined) {
+            displayAnswer();
+            calculations.textContent += this.textContent;
+            operator = this.textContent;
+        } else {
+            firstOperand = parseInt(calculationArray[0]);
+            operator = this.textContent;
+        }    
+    }
+}
+
+
+/* Calculate expression in calculations display then populate 
+   the calculated display with operate functions return value.*/
+function displayAnswer() {
+    solution = calculations.textContent;
+    let calculatedAnswer;
+
+    calculationArray = calculations.textContent.split(/\+|-|\/|\*/g);
+    secondOperand = parseInt(calculationArray[1]);
+
+    switch (operator) {
+        case "+":
+            calculatedAnswer = operate("+", firstOperand, secondOperand);
+            break;
+        case "-":
+            calculatedAnswer = operate("-", firstOperand, secondOperand);
+            break;
+        case "*":
+            calculatedAnswer = operate("*", firstOperand, secondOperand);
+            break;
+        case "/":
+            calculatedAnswer = operate("/", firstOperand, secondOperand);
+            break;
+    }
+
+    calculated.textContent = calculatedAnswer;
+    calculations.textContent = calculatedAnswer;
+    firstOperand = calculatedAnswer;
+    secondOperand = undefined;
+}
+
+
+// Number buttons
 const one = document.getElementById("one");
 const two = document.getElementById("two");
 const three = document.getElementById("three");
@@ -48,70 +113,33 @@ const six = document.getElementById("six");
 const seven = document.getElementById("seven");
 const eight = document.getElementById("eight");
 const nine = document.getElementById("nine");
-const plusBtn = document.getElementById("plus");
-const minusBtn = document.getElementById("minus");
-const multiplyBtn = document.getElementById("multiply");
-const divideBtn = document.getElementById("divide");
-const operateBtn = document.getElementById("operate");
-
-const calculations = document.getElementById("calculations");
-calculations.textContent = "0";
-const calculated = document.getElementById("calculated");
-
-
-// Display pressed number buttons on calculations display
-function displayCalculations(e) {
-    if (calculations.textContent === "0") calculations.textContent = "";
-    calculations.textContent += this.textContent;
-}
-
 const numberBtns = document.getElementsByClassName("number");
-
 for (i of numberBtns) {
     i.addEventListener("click", displayCalculations);
 }
 
-
-// Store first number that is input when user presses an operator
-// Store second number if first number is already defined when user presses an operator or operate function
-// Set calculated answer as first number and remove second number
-function storeOperator(e) {
-    let solution = calculations.textContent;
-    let calculatedAnswer;
-    if (typeof firstOperand === "undefined") {
-        firstOperand = parseInt(calculations.textContent);
-        calculations.textContent += this.textContent;
-    } else if (typeof firstOperand != "undefined"){
-        calculationArray = calculations.textContent.split(/\+|-|\/|\*/g);
-        secondOperand = parseInt(calculationArray[1]);
-
-        if (solution.includes("+")) {
-            calculatedAnswer = operate("+", firstOperand, secondOperand);
-        } else if (solution.includes("-")) {
-            calculatedAnswer = operate("-", firstOperand, secondOperand);
-        } else if (solution.includes("*")) {
-            calculatedAnswer = operate("*", firstOperand, secondOperand);
-        } else if (solution.includes("/")) {
-            calculatedAnswer = operate("/", firstOperand, secondOperand);
-        }
-
-        calculations.textContent = calculatedAnswer + this.textContent;
-        firstOperand = calculatedAnswer;
-        secondOperand;
-    }
+// Operator buttons
+const plusBtn = document.getElementById("plus");
+const minusBtn = document.getElementById("minus");
+const multiplyBtn = document.getElementById("multiply");
+const divideBtn = document.getElementById("divide");
+const operatorBtns = document.getElementsByClassName("operator");
+for (i of operatorBtns) {
+    i.addEventListener("click", storeOperator);
 }
 
+// Display
+const calculations = document.getElementById("calculations");
+calculations.textContent = "0";
+const calculated = document.getElementById("calculated");
+
+// Operate button
+const operateBtn = document.getElementById("operate");
+operateBtn.addEventListener("click", displayAnswer);
+
+// Arithmetic helper variables
 let firstOperand;
 let secondOperand;
-let calculationArray = [];
-
-const operatorBtns = document.getElementsByClassName("operator");
-
-for (i of operatorBtns) {
-    i.addEventListener("click", storeOperator)
-}
-
-// Display calculated number from calculations to display
-
-
-// Save which operation has been chosen and then operate() on them when the user presses the “=” key
+let operator;
+let solution;
+let calculationArray;
