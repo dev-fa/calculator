@@ -130,6 +130,10 @@ for (i of numberBtns) {
     i.addEventListener("click", displayCalculations);
 }
 
+// Decimal button
+const decimal = document.getElementById("decimal");
+decimal.addEventListener("click", displayCalculations);
+
 // Operator buttons
 const plusBtn = document.getElementById("plus");
 const minusBtn = document.getElementById("minus");
