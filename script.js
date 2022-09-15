@@ -93,8 +93,16 @@ function displayAnswer() {
             calculatedAnswer = operate("*", firstOperand, secondOperand);
             break;
         case "/":
-            calculatedAnswer = operate("/", firstOperand, secondOperand);
-            break;
+            // Show error if diving by zero then clear the display
+            if (firstOperand == "0" || secondOperand == "0") {
+                alert("Error: You cannot divide by zero.");
+                clearDisplay();
+                firstOperand = "0";
+                return;
+            } else {
+                calculatedAnswer = operate("/", firstOperand, secondOperand);
+                break;
+            }
     }
 
     calculated.textContent = calculatedAnswer;
