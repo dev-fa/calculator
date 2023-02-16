@@ -15,7 +15,69 @@
 </head>
 
 <body>
-  <h1>Title</h1>
+  <h1 class="sr-only">Calculator</h1>
+  <main>
+    <div class="calculator">
+
+      <div class="calculator__header">
+        <p class="calculator__header__title">calc</p>
+        <div class="calculator__header__theme">
+          <p class="theme__title">THEME</p>
+          <div class="theme__numbers">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+          </div>
+          <div class="theme__switch">
+            <fieldset>
+              <legend class="sr-only">Pick a theme</legend>
+
+              <label for="theme-1" class="sr-only">1</label>
+              <input type="radio" class="theme__option" name="theme" id="theme-1" checked>
+
+              <label for="theme-2" class="sr-only">2</label>
+              <input type="radio" class="theme__option" name="theme" id="theme-2">
+
+              <label for="theme-3" class="sr-only">3</label>
+              <input type="radio" class="theme__option" name="theme" id="theme-3">
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div class="calculator__screen">
+        <p class="calculator__screen__number">58008</p>
+      </div>
+
+      <div class="calculator__keypad-container">
+        <div class="calculator__keypad">
+          <button type="button" class="calculator__keypad__func calculator__keypad--delete"
+            data-key="delete">DEL</button>
+          <button type="button" class="calculator__keypad__func calculator__keypad__func--big calculator__keypad--reset"
+            data-key="reset">RESET</button>
+          <button type="button" class="calculator__keypad__enter calculator__keypad--enter" data-key="enter">=</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--zero" data-key="zero">0</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--one" data-key="one">1</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--two" data-key="two">2</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--three" data-key="three">3</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--four" data-key="four">4</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--five" data-key="five">5</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--six" data-key="six">6</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--seven" data-key="seven">7</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--eight" data-key="eight">8</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--nine" data-key="nine">9</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--add" data-key="add">+</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--subtract"
+            data-key="subtract">-</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--multiply"
+            data-key="multiply">x</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--divide" data-key="divide">/</button>
+          <button type="button" class="calculator__keypad__main calculator__keypad--decimal"
+            data-key="decimal">.</button>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 
 </html>

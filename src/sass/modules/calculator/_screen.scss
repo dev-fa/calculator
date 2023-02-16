@@ -1,0 +1,19 @@
+@use '../functions' as f;
+
+.calculator__screen {
+  background-color: var(--clr-background-tertiary);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 327px;
+  height: 88px;
+  padding: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 24px;
+
+  &__number {
+    color: var(--clr-text-primary);
+    font-size: f.rem(40);
+  }
+}

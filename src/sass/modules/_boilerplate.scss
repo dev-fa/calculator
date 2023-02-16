@@ -10,7 +10,7 @@
   --clr-enter-key-shadow: hsl(6, 70%, 34%);
   --clr-main-key-background: hsl(30, 25%, 89%);
   --clr-main-key-shadow: hsl(28, 16%, 65%);
-  --clr-text-primary: hsl(221, 14%, 31%);
+  --clr-text-primary: hsl(0, 0%, 100%);
   --clr-text-dark: hsl(221, 14%, 31%);
   --clr-text-light: hsl(0, 0%, 100%);
   // THEME 2
@@ -56,6 +56,19 @@ html {
 
 body {
   font-family: var(--ff-primary);
+  background-color: var(--clr-background-primary);
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100%;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+}
+
+fieldset {
+  border: none;
 }
 
 .sr-only {

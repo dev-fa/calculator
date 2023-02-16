@@ -1,0 +1,134 @@
+@use '../functions' as f;
+
+.calculator__keypad-container {
+  background-color: var(--clr-background-secondary);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 327px;
+  height: 420px;
+  padding: 24px;
+}
+
+.calculator__keypad {
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+  grid-template-areas:
+    'sev eig nin del'
+    'fou fiv six add'
+    'one two thr sub'
+    'dec zer div mul'
+    'res res ent ent';
+  gap: 13px;
+
+  &__main {
+    width: 100%;
+    max-width: 60px;
+    height: 64px;
+    font-size: f.rem(32);
+    background-color: var(--clr-main-key-background);
+    color: var(--clr-text-dark);
+    border-radius: 5px;
+    border-bottom: 4px solid var(--clr-main-key-shadow);
+    padding-top: 8px;
+    vertical-align: middle;
+  }
+
+  &__func {
+    width: 100%;
+    max-width: 60px;
+    height: 64px;
+    font-size: f.rem(20);
+    background-color: var(--clr-func-key-background);
+    color: var(--clr-text-light);
+    border-radius: 5px;
+    border-bottom: 4px solid var(--clr-func-key-shadow);
+
+    &--big {
+      width: 100%;
+      max-width: 133px;
+    }
+  }
+
+  &__enter {
+    width: 100%;
+    max-width: 133px;
+    height: 64px;
+    font-size: f.rem(20);
+    background-color: var(--clr-enter-key-background);
+    color: var(--clr-text-light);
+    border-radius: 5px;
+    border-bottom: 4px solid var(--clr-enter-key-shadow);
+  }
+
+  &--enter {
+    grid-area: ent;
+  }
+
+  &--reset {
+    grid-area: res;
+  }
+
+  &--delete {
+    grid-area: del;
+  }
+
+  &--zero {
+    grid-area: zer;
+  }
+
+  &--one {
+    grid-area: one;
+  }
+
+  &--two {
+    grid-area: two;
+  }
+
+  &--three {
+    grid-area: thr;
+  }
+
+  &--four {
+    grid-area: fou;
+  }
+
+  &--five {
+    grid-area: fiv;
+  }
+
+  &--six {
+    grid-area: six;
+  }
+
+  &--seven {
+    grid-area: sev;
+  }
+
+  &--eight {
+    grid-area: eig;
+  }
+
+  &--nine {
+    grid-area: nin;
+  }
+
+  &--add {
+    grid-area: add;
+  }
+
+  &--subtract {
+    grid-area: sub;
+  }
+
+  &--multiply {
+    grid-area: mul;
+  }
+
+  &--divide {
+    grid-area: div;
+  }
+
+  &--decimal {
+    grid-area: dec;
+  }
+}
