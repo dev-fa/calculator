@@ -1,6 +1,5 @@
 :root {
   --ff-primary: 'League Spartan', sans-serif;
-  // THEME 1
   --clr-background-primary: hsl(222, 26%, 31%);
   --clr-background-secondary: hsl(223, 31%, 20%);
   --clr-background-tertiary: hsl(224, 36%, 15%);
@@ -13,32 +12,54 @@
   --clr-text-primary: hsl(0, 0%, 100%);
   --clr-text-dark: hsl(221, 14%, 31%);
   --clr-text-light: hsl(0, 0%, 100%);
-  // THEME 2
-  // --clr-background-primary: hsl(0, 0%, 90%);
-  // --clr-background-secondary: hsl(0, 5%, 81%);
-  // --clr-background-tertiary: hsl(0, 0%, 93%);
-  // --clr-func-key-background: hsl(185, 42%, 37%);
-  // --clr-func-key-shadow: hsl(185, 58%, 25%);
-  // --clr-enter-key-background: hsl(25, 98%, 40%);
-  // --clr-enter-key-shadow: hsl(25, 99%, 27%);
-  // --clr-main-key-background: hsl(45, 7%, 89%);
-  // --clr-main-key-shadow: hsl(35, 11%, 61%);
-  // --clr-text-primary: hsl(60, 10%, 19%);
-  // --clr-text-dark: hsl(60, 10%, 19%);
-  // --clr-text-light: hsl(0, 0%, 100%);
-  // THEME 3
-  // --clr-background-primary: hsl(268, 75%, 9%);
-  // --clr-background-secondary: hsl(268, 71%, 12%);
-  // --clr-background-tertiary: hsl(268, 71%, 12%);
-  // --clr-func-key-background: hsl(281, 89%, 26%);
-  // --clr-func-key-shadow: hsl(285, 91%, 52%);
-  // --clr-enter-key-background: hsl(176, 100%, 44%);
-  // --clr-enter-key-shadow: hsl(177, 92%, 70%);
-  // --clr-main-key-background: hsl(268, 47%, 21%);
-  // --clr-main-key-shadow: hsl(290, 70%, 36%);
-  // --clr-text-primary: hsl(52, 100%, 62%);
-  // --clr-text-dark: hsl(198, 20%, 13%);
-  // --clr-text-light: hsl(0, 0%, 100%);
+}
+
+.theme1,
+:root:has(#theme-1:checked) {
+  --clr-background-primary: hsl(222, 26%, 31%);
+  --clr-background-secondary: hsl(223, 31%, 20%);
+  --clr-background-tertiary: hsl(224, 36%, 15%);
+  --clr-func-key-background: hsl(225, 21%, 49%);
+  --clr-func-key-shadow: hsl(224, 28%, 35%);
+  --clr-enter-key-background: hsl(6, 63%, 50%);
+  --clr-enter-key-shadow: hsl(6, 70%, 34%);
+  --clr-main-key-background: hsl(30, 25%, 89%);
+  --clr-main-key-shadow: hsl(28, 16%, 65%);
+  --clr-text-primary: hsl(0, 0%, 100%);
+  --clr-text-dark: hsl(221, 14%, 31%);
+  --clr-text-light: hsl(0, 0%, 100%);
+}
+
+.theme2,
+:root:has(#theme-2:checked) {
+  --clr-background-primary: hsl(0, 0%, 90%);
+  --clr-background-secondary: hsl(0, 5%, 81%);
+  --clr-background-tertiary: hsl(0, 0%, 93%);
+  --clr-func-key-background: hsl(185, 42%, 37%);
+  --clr-func-key-shadow: hsl(185, 58%, 25%);
+  --clr-enter-key-background: hsl(25, 98%, 40%);
+  --clr-enter-key-shadow: hsl(25, 99%, 27%);
+  --clr-main-key-background: hsl(45, 7%, 89%);
+  --clr-main-key-shadow: hsl(35, 11%, 61%);
+  --clr-text-primary: hsl(60, 10%, 19%);
+  --clr-text-dark: hsl(60, 10%, 19%);
+  --clr-text-light: hsl(0, 0%, 100%);
+}
+
+.theme3,
+:root:has(#theme-3:checked) {
+  --clr-background-primary: hsl(268, 75%, 9%);
+  --clr-background-secondary: hsl(268, 71%, 12%);
+  --clr-background-tertiary: hsl(268, 71%, 12%);
+  --clr-func-key-background: hsl(281, 89%, 26%);
+  --clr-func-key-shadow: hsl(285, 91%, 52%);
+  --clr-enter-key-background: hsl(176, 100%, 44%);
+  --clr-enter-key-shadow: hsl(177, 92%, 70%);
+  --clr-main-key-background: hsl(268, 47%, 21%);
+  --clr-main-key-shadow: hsl(290, 70%, 36%);
+  --clr-text-primary: hsl(52, 100%, 62%);
+  --clr-text-dark: hsl(52, 100%, 62%);
+  --clr-text-light: hsl(0, 0%, 100%);
 }
 
 html {
@@ -57,7 +78,7 @@ html {
 body {
   font-family: var(--ff-primary);
   background-color: var(--clr-background-primary);
-  width: 100vw;
+  // width: 100vw;
   min-height: 100vh;
   max-height: 100%;
 }
