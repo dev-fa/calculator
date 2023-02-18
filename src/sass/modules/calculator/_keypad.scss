@@ -20,6 +20,22 @@
     'res res ent ent';
   gap: 13px;
 
+  &__main:hover,
+  &__func:hover,
+  &__func--big:hover,
+  &__enter:hover {
+    filter: contrast(1.3) brightness(1.6);
+    transition: filter 0.2s ease-in-out;
+  }
+
+  &__main:active,
+  &__func:active,
+  &__func--big:active,
+  &__enter:active {
+    transform: scale(0.8);
+    transition: transform 0.1s ease-in;
+  }
+
   &__main {
     width: 100%;
     max-width: 60px;
