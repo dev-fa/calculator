@@ -1,10 +1,10 @@
 @use '../functions' as f;
+@use '../breakpoints' as b;
 
 .calculator__screen {
   background-color: var(--clr-background-tertiary);
   border-radius: 10px;
   width: 100%;
-  max-width: 327px;
   height: 88px;
   padding: 24px;
   display: flex;
@@ -12,8 +12,17 @@
   align-items: center;
   margin-bottom: 24px;
 
+  @include b.breakpoint(large) {
+    height: 128px;
+    padding: 36px;
+  }
+
   &__number {
     color: var(--clr-text-primary);
     font-size: f.rem(40);
+
+    @include b.breakpoint(large) {
+      font-size: f.rem(56);
+    }
   }
 }

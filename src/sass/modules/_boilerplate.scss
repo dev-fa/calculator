@@ -78,8 +78,8 @@ html {
 body {
   font-family: var(--ff-primary);
   background-color: var(--clr-background-primary);
-  // width: 100vw;
   min-height: 100vh;
+  min-height: 100dvh;
   max-height: 100%;
 }
 

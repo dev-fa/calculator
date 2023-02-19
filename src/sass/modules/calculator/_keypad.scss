@@ -1,12 +1,17 @@
 @use '../functions' as f;
+@use '../breakpoints' as b;
 
 .calculator__keypad-container {
   background-color: var(--clr-background-secondary);
   border-radius: 10px;
   width: 100%;
-  max-width: 327px;
   height: 420px;
   padding: 24px;
+
+  @include b.breakpoint(large) {
+    height: 480px;
+    padding: 32px;
+  }
 }
 
 .calculator__keypad {
@@ -19,6 +24,10 @@
     'dec zer div mul'
     'res res ent ent';
   gap: 13px;
+
+  @include b.breakpoint(large) {
+    gap: 24px;
+  }
 
   &__main:hover,
   &__func:hover,
@@ -36,44 +45,50 @@
     transition: transform 0.1s ease-in;
   }
 
-  &__main {
+  &__main,
+  &__func,
+  &__enter {
     width: 100%;
-    max-width: 60px;
     height: 64px;
+    border-radius: 5px;
+
+    @include b.breakpoint(large) {
+      border-radius: 10px;
+    }
+  }
+
+  &__main {
     font-size: f.rem(32);
     background-color: var(--clr-main-key-background);
     color: var(--clr-text-dark);
-    border-radius: 5px;
     border-bottom: 4px solid var(--clr-main-key-shadow);
     padding-top: 8px;
-    vertical-align: middle;
+
+    @include b.breakpoint(large) {
+      font-size: f.rem(40);
+    }
   }
 
   &__func {
-    width: 100%;
-    max-width: 60px;
-    height: 64px;
     font-size: f.rem(20);
     background-color: var(--clr-func-key-background);
     color: var(--clr-text-light);
-    border-radius: 5px;
     border-bottom: 4px solid var(--clr-func-key-shadow);
 
-    &--big {
-      width: 100%;
-      max-width: 133px;
+    @include b.breakpoint(large) {
+      font-size: f.rem(28);
     }
   }
 
   &__enter {
-    width: 100%;
-    max-width: 133px;
-    height: 64px;
     font-size: f.rem(20);
     background-color: var(--clr-enter-key-background);
     color: var(--clr-text-light);
-    border-radius: 5px;
     border-bottom: 4px solid var(--clr-enter-key-shadow);
+
+    @include b.breakpoint(large) {
+      font-size: f.rem(28);
+    }
   }
 
   &--enter {
