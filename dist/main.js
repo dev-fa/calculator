@@ -16,7 +16,17 @@
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_localStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/localStorage */ \"./src/js/modules/localStorage.js\");\n\n\nconst ls = new _modules_localStorage__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\ndocument.onload = ls.loadThemeStorage();\n\n\n//# sourceURL=webpack://calculator/./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_localStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/localStorage */ \"./src/js/modules/localStorage.js\");\n/* harmony import */ var _modules_calculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/calculator */ \"./src/js/modules/calculator.js\");\n/* eslint-disable no-console */\n\n\n\nconst ls = new _modules_localStorage__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\ndocument.onload = ls.loadThemeStorage();\n\nconst calculator = new _modules_calculator__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nconsole.log(calculator.getCurrentValue());\n// calculator.setCurrentValue(1);\n// calculator.setCurrentValue(2);\n// console.log(calculator.getCurrentValue());\n// calculator.add(7);\n// console.log(calculator.getCurrentValue());\n// calculator.subtract(5);\n// console.log(calculator.getCurrentValue());\n// calculator.multiply(3);\n// console.log(calculator.getCurrentValue());\n// calculator.delete();\n// console.log(calculator.getCurrentValue());\n// calculator.clear();\n// console.log(calculator.getCurrentValue());\n\n\n//# sourceURL=webpack://calculator/./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/calculator.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/calculator.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Calculator)\n/* harmony export */ });\nclass Calculator {\n  constructor() {\n    this.currentValue = 0;\n  }\n\n  getCurrentValue() {\n    return this.currentValue;\n  }\n\n  setCurrentValue(number) {\n    const tempValue = String(this.currentValue);\n    const tempNumber = String(number);\n    const newValue = Number(tempValue + tempNumber);\n    this.currentValue = newValue;\n  }\n\n  clear() {\n    this.currentValue = 0;\n  }\n\n  delete() {\n    const tempValue = String(this.currentValue);\n    if (tempValue.length === 1) {\n      this.currentValue = 0;\n    } else {\n      const newValue = tempValue.substring(0, tempValue.length - 1);\n      this.currentValue = Number(newValue);\n    }\n  }\n\n  add(number) {\n    this.currentValue += number;\n  }\n\n  subtract(number) {\n    this.currentValue -= number;\n  }\n\n  multiply(number) {\n    this.currentValue *= number;\n  }\n\n  divide(number) {\n    if (number === 0) {\n      throw new Error('Cannot divide by zero');\n    }\n\n    this.currentValue /= number;\n  }\n}\n\n\n//# sourceURL=webpack://calculator/./src/js/modules/calculator.js?");
 
 /***/ }),
 
