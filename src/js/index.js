@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import LS from './modules/localStorage';
 import UI from './modules/ui';
 

@@ -31,13 +31,41 @@ export default class UI {
     if (key in UI.numberKeys) {
       UI.useNumbers(key);
     } else if (key in UI.functionKeys) {
-      UI.screen.textContent =
-        calculator.getCurrentValue() + UI.functionKeys[key];
+      UI.useFunction(key);
     } else if (key === 'delete') {
       UI.useDelete();
     } else if (key === 'reset') {
       UI.useReset();
     }
+  }
+
+  static useFunction(key) {
+    const functions = ['+', '-', '×', '/'];
+    for (let i = 0; i < functions.length; i += 1) {
+      if (UI.screen.textContent.indexOf(functions[i]) !== -1) {
+        const operands = calculator.currentValue.split(functions[i]);
+        let num;
+        [calculator.currentValue, num] = operands;
+        if (functions[i] === '+') {
+          calculator.add(num);
+        } else if (functions[i] === '-') {
+          calculator.subtract(num);
+        } else if (functions[i] === '×') {
+          calculator.multiply(num);
+        } else if (functions[i] === '/') {
+          calculator.divide(num);
+        }
+        UI.screen.textContent = `${calculator.getCurrentValue()}${
+          UI.functionKeys[key]
+        }`;
+        calculator.currentValue = `${calculator.getCurrentValue()}${
+          UI.functionKeys[key]
+        }`;
+        return;
+      }
+    }
+    calculator.currentValue += UI.functionKeys[key];
+    UI.screen.textContent = calculator.getCurrentValue();
   }
 
   static useNumbers(key) {
@@ -46,8 +74,8 @@ export default class UI {
     if (key === 'decimal') {
       // Execute if decimal is not last index or already within string
       if (
-        UI.screen.textContent.indexOf('.') !== numLastIndex &&
-        UI.screen.textContent.indexOf('.') === -1
+        UI.screen.textContent.indexOf('.') !== numLastIndex
+        // && UI.screen.textContent.indexOf('.') === -1
       ) {
         UI.screen.textContent = `${calculator.getCurrentValue()}.`;
       }
@@ -68,28 +96,15 @@ export default class UI {
       calculator.currentValue = UI.numberKeys[key];
       UI.screen.textContent = calculator.getCurrentValue();
     }
-    // DEBUG
-    console.log(`
-    Value: ${calculator.getCurrentValue()}
-    Type: ${typeof calculator.getCurrentValue()}
-    `);
   }
 
   static useDelete() {
     calculator.delete();
     UI.screen.textContent = calculator.getCurrentValue();
-    console.log(`
-    Value: ${calculator.getCurrentValue()}
-    Type: ${typeof calculator.getCurrentValue()}
-    `);
   }
 
   static useReset() {
     calculator.reset();
     UI.screen.textContent = calculator.getCurrentValue();
-    console.log(`
-    Value: ${calculator.getCurrentValue()}
-    Type: ${typeof calculator.getCurrentValue()}
-    `);
   }
 }

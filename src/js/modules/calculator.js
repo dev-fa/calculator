@@ -26,22 +26,28 @@ export default class Calculator {
   }
 
   add(number) {
-    this.currentValue += number;
+    const firstOperand = Number(this.currentValue);
+    const secondOperand = Number(number);
+    this.currentValue = Number((firstOperand + secondOperand).toFixed(2));
   }
 
   subtract(number) {
-    this.currentValue -= number;
+    const firstOperand = Number(this.currentValue);
+    const secondOperand = Number(number);
+    this.currentValue = Number((firstOperand - secondOperand).toFixed(2));
   }
 
   multiply(number) {
-    this.currentValue *= number;
+    const firstOperand = Number(this.currentValue);
+    const secondOperand = Number(number);
+    this.currentValue = Number((firstOperand * secondOperand).toFixed(2));
   }
 
   divide(number) {
-    if (number === 0) {
-      throw new Error('Cannot divide by zero');
+    if (number !== '0') {
+      const firstOperand = Number(this.currentValue);
+      const secondOperand = Number(number);
+      this.currentValue = Number((firstOperand / secondOperand).toFixed(2));
     }
-
-    this.currentValue /= number;
   }
 }
