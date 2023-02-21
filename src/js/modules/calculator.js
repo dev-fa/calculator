@@ -4,17 +4,14 @@ export default class Calculator {
   }
 
   getCurrentValue() {
-    return this.currentValue;
+    return String(this.currentValue);
   }
 
   setCurrentValue(number) {
-    const tempValue = String(this.currentValue);
-    const tempNumber = String(number);
-    const newValue = Number(tempValue + tempNumber);
-    this.currentValue = newValue;
+    this.currentValue = Number(number);
   }
 
-  clear() {
+  reset() {
     this.currentValue = 0;
   }
 
@@ -24,7 +21,7 @@ export default class Calculator {
       this.currentValue = 0;
     } else {
       const newValue = tempValue.substring(0, tempValue.length - 1);
-      this.currentValue = Number(newValue);
+      this.currentValue = newValue;
     }
   }
 

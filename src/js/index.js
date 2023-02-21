@@ -1,22 +1,16 @@
 /* eslint-disable no-console */
 import LS from './modules/localStorage';
-import Calculator from './modules/calculator';
+import UI from './modules/ui';
+
+const keypadKeys = document.querySelectorAll('[data-key]');
+
+const ui = new UI();
+
+keypadKeys.forEach((key) => {
+  key.addEventListener('click', () => {
+    ui.useKeypad(key.getAttribute('data-key'));
+  });
+});
 
 const ls = new LS();
 document.onload = ls.loadThemeStorage();
-
-const calculator = new Calculator();
-console.log(calculator.getCurrentValue());
-// calculator.setCurrentValue(1);
-// calculator.setCurrentValue(2);
-// console.log(calculator.getCurrentValue());
-// calculator.add(7);
-// console.log(calculator.getCurrentValue());
-// calculator.subtract(5);
-// console.log(calculator.getCurrentValue());
-// calculator.multiply(3);
-// console.log(calculator.getCurrentValue());
-// calculator.delete();
-// console.log(calculator.getCurrentValue());
-// calculator.clear();
-// console.log(calculator.getCurrentValue());
