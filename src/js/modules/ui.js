@@ -26,6 +26,8 @@ export default class UI {
     divide: '/',
   };
 
+  static functions = ['+', '-', '×', '/'];
+
   // eslint-disable-next-line class-methods-use-this
   useKeypad(key) {
     if (key in UI.numberKeys) {
@@ -41,50 +43,54 @@ export default class UI {
     }
   }
 
-  static useNumbers(key) {
-    const numLastIndex = UI.screen.textContent.length - 1;
-    // If key is decimal
-    if (key === 'decimal') {
-      // Execute if decimal is not last index or already within string
-      if (
-        UI.screen.textContent.indexOf('.') !== numLastIndex &&
-        UI.screen.textContent.indexOf('.') === -1
-      ) {
-        UI.screen.textContent = `${calculator.getCurrentValue()}.`;
+  static checkDecimal() {
+    for (let i = 0; i < UI.functions.length; i += 1) {
+      if (UI.screen.textContent.indexOf(UI.functions[i]) !== -1) {
+        const operands = calculator.currentValue.split(UI.functions[i]);
+        const num = operands[1];
+        if (num.indexOf('.') === -1) {
+          return true;
+        }
       }
-      // If number has decimal before
-    } else if (UI.screen.textContent.substring(numLastIndex) === '.') {
-      calculator.currentValue = `${calculator.getCurrentValue()}.${
-        UI.numberKeys[key]
-      }`;
-      UI.screen.textContent = calculator.getCurrentValue();
-      // If current value is not zero
+    }
+
+    if (UI.screen.textContent.indexOf('.') === -1) {
+      return true;
+    }
+
+    return false;
+  }
+
+  static useNumbers(key) {
+    if (key === 'decimal') {
+      if (UI.checkDecimal()) {
+        UI.screen.textContent = `${calculator.getCurrentValue()}.`;
+        calculator.currentValue = UI.screen.textContent;
+      }
     } else if (calculator.currentValue !== 0) {
       calculator.currentValue = String(
         calculator.getCurrentValue() + UI.numberKeys[key]
       );
       UI.screen.textContent = calculator.getCurrentValue();
-      // Replace current value if it is zero
-    } else {
+    } else if (calculator.currentValue === 0) {
       calculator.currentValue = UI.numberKeys[key];
       UI.screen.textContent = calculator.getCurrentValue();
     }
   }
 
   static useFunction(key) {
-    const functions = ['+', '-', '×', '/'];
-    for (let i = 0; i < functions.length; i += 1) {
-      if (UI.screen.textContent.indexOf(functions[i]) !== -1) {
-        const operands = calculator.currentValue.split(functions[i]);
+    for (let i = 0; i < UI.functions.length; i += 1) {
+      if (UI.screen.textContent.indexOf(UI.functions[i]) !== -1) {
+        const operands = calculator.currentValue.split(UI.functions[i]);
         let num;
         [calculator.currentValue, num] = operands;
-        if (functions[i] === '+') {
+        if (UI.functions[i] === '+') {
           calculator.add(num);
-        } else if (functions[i] === '-') {
+        } else if (UI.functions[i] === '-') {
           calculator.subtract(num);
-        } else if (functions[i] === '×') {
+        } else if (UI.functions[i] === '×') {
           calculator.multiply(num);
-        } else if (functions[i] === '/') {
+        } else if (UI.functions[i] === '/') {
           calculator.divide(num);
         }
         UI.screen.textContent = `${calculator.getCurrentValue()}${
@@ -101,19 +107,18 @@ export default class UI {
   }
 
   static useEnter() {
-    const functions = ['+', '-', '×', '/'];
-    for (let i = 0; i < functions.length; i += 1) {
-      if (UI.screen.textContent.indexOf(functions[i]) !== -1) {
-        const operands = calculator.currentValue.split(functions[i]);
+    for (let i = 0; i < UI.functions.length; i += 1) {
+      if (UI.screen.textContent.indexOf(UI.functions[i]) !== -1) {
+        const operands = calculator.currentValue.split(UI.functions[i]);
         let num;
         [calculator.currentValue, num] = operands;
-        if (functions[i] === '+') {
+        if (UI.functions[i] === '+') {
           calculator.add(num);
-        } else if (functions[i] === '-') {
+        } else if (UI.functions[i] === '-') {
           calculator.subtract(num);
-        } else if (functions[i] === '×') {
+        } else if (UI.functions[i] === '×') {
           calculator.multiply(num);
-        } else if (functions[i] === '/') {
+        } else if (UI.functions[i] === '/') {
           calculator.divide(num);
         }
         UI.screen.textContent = `${calculator.getCurrentValue()}`;
