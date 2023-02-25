@@ -14,21 +14,27 @@ Multiple themes and fully responsive!
 
 ## Screenshots
 
-Paste project screenshots here
+![Desktop View](./calculator-desktop.png 'Desktop')
+![Mobile View](./calculator-mobile.png 'Mobile')
 
 ## Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [calculator](https://dev-fa.github.io/calculator/)
 
 ## Built with
 
 - Semantic HTML5
 - SCSS
 - ES6 Javascript
+- Webpack
+- ES-Lint + Prettier
 
 ## Features
 
 - Responsive Design
+- Multiple Themes
+- Saves theme to local storage
+- Basic arithmetic calculations
 
 ## Author
 
