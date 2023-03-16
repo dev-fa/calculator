@@ -91,7 +91,9 @@ export default class UI {
         } else if (UI.functions[i] === '×') {
           calculator.multiply(num);
         } else if (UI.functions[i] === '/') {
-          calculator.divide(num);
+          if (num !== '0') {
+            calculator.divide(num);
+          }
         }
         UI.screen.textContent = `${calculator.getCurrentValue()}${
           UI.functionKeys[key]
