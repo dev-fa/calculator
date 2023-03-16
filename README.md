@@ -14,7 +14,9 @@ Multiple themes and fully responsive!
 
 ## Screenshots
 
-![Desktop View](./calculator-desktop.png 'Desktop')
+![Desktop View 1](./calculator-desktop.png 'Desktop Theme Default')
+![Desktop View 2](./calculator-desktop-theme2.png 'Desktop Theme 2')
+![Desktop View 3](./calculator-desktop-theme3.png 'Desktop Theme 3')
 ![Mobile View](./calculator-mobile.png 'Mobile')
 
 ## Links
